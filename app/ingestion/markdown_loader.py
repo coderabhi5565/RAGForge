@@ -8,7 +8,7 @@ def load_markdown(file_path: str) -> list[Document]:
     Load a Markdown document while preserving
     the original Markdown content.
     """
-
+    
     path = Path(file_path)
 
     if not path.exists():
