@@ -48,12 +48,15 @@ class VectorStore:
 
         points = []
 
-        for index, (document, embedding) in enumerate(
-            zip(documents, embeddings)
+        for document, embedding in zip(
+            documents,
+            embeddings,
         ):
+            chunk_id = document.metadata["chunk_id"]
+
             points.append(
                 PointStruct(
-                    id=index,
+                    id=chunk_id,
                     vector=embedding,
                     payload={
                         "text": document.page_content,
@@ -67,7 +70,11 @@ class VectorStore:
             points=points,
         )
 
-    def similarity_search(self,query_vector: list[float],top_k: int = 5,):
+    def similarity_search(
+        self,
+        query_vector: list[float],
+        top_k: int = 5,
+    ):
         results = self.client.query_points(
             collection_name=self.collection_name,
             query=query_vector,
