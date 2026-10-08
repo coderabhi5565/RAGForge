@@ -25,6 +25,13 @@ class RetrievalEvaluator:
             for chunk_id in retrieved_chunk_ids
         )
 
+        print(
+            f"K={k} | "
+            f"Relevant={relevant_chunk_ids} | "
+            f"Retrieved={retrieved_chunk_ids} | "
+            f"Hit={int(hit)}"
+        )
+
         return {
             "hit": int(hit),
             "retrieved_chunk_ids": retrieved_chunk_ids,

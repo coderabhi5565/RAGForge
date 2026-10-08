@@ -1,6 +1,7 @@
 from app.retrieval.embeddings import EmbeddingService
 from app.retrieval.vector_store import VectorStore
 from app.generation.generator import Generator
+from app.retrieval.reranker import Reranker
 
 
 class RAGService:
@@ -8,6 +9,7 @@ class RAGService:
         self.embedding_service = EmbeddingService()
         self.vector_store = VectorStore()
         self.generator = Generator()
+        self.reranker = Reranker()
 
     def retrieve(
         self,
@@ -20,6 +22,12 @@ class RAGService:
 
         results = self.vector_store.similarity_search(
             query_vector=query_vector,
+            top_k=20,
+        )
+
+        results = self.reranker.rerank(
+            query=question,
+            documents=results,
             top_k=top_k,
         )
 
