@@ -1,0 +1,124 @@
+[
+  {
+    "id": "q001",
+    "question": "What information should a customer have in the car rental system?",
+    "ground_truth_answer": "A customer should have a unique ID, name, contact information, and driving license information.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+    ]
+  },
+  {
+    "id": "q002",
+    "question": "Which car types are initially supported by the system?",
+    "ground_truth_answer": "The system initially supports HATCHBACK, SEDAN, SUV, and LUXURY.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+    ]
+  },
+  {
+    "id": "q003",
+    "question": "What information is stored for a car?",
+    "ground_truth_answer": "Each car has a unique registration number, model, car type, rental price per day, current location, and availability status.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+    ]
+  },
+  {
+    "id": "q004",
+    "question": "How can a customer search for available cars?",
+    "ground_truth_answer": "A customer can search using pickup location, start date and time, end date and time, and car type. The system should return cars available for the entire requested rental period.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+    ]
+  },
+  {
+    "id": "q005",
+    "question": "What information does a booking contain?",
+    "ground_truth_answer": "A booking contains a booking ID, customer, car, pickup location, return location, start date and time, end date and time, total rental amount, and booking status.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+    ]
+  },
+  {
+    "id": "q006",
+    "question": "What are the possible booking statuses?",
+    "ground_truth_answer": "The possible booking statuses are CREATED, CONFIRMED, ACTIVE, COMPLETED, and CANCELLED.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+    ]
+  },
+  {
+    "id": "q007",
+    "question": "How is the total rental amount calculated in V1?",
+    "ground_truth_answer": "The total rental amount is calculated as the number of rental days multiplied by the car's daily rental price.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+      "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+    ]
+  },
+  {
+    "id": "q008",
+    "question": "What happens if two bookings overlap for the same car?",
+    "ground_truth_answer": "A car cannot be booked for overlapping rental periods. For example, Jan 10–15 overlaps Jan 12–14, so the second booking is not allowed, while Jan 16–20 is allowed.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+    ]
+  },
+  {
+    "id": "q009",
+    "question": "What state transition occurs when a customer picks up a car?",
+    "ground_truth_answer": "When the car is picked up, the booking transitions from CONFIRMED to ACTIVE.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+    ]
+  },
+  {
+    "id": "q010",
+    "question": "What state transition occurs when a rented car is returned?",
+    "ground_truth_answer": "When the car is returned, the booking transitions from ACTIVE to COMPLETED, and the car becomes available for future rentals.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+    ]
+  },
+  {
+    "id": "q011",
+    "question": "When can a customer cancel a booking?",
+    "ground_truth_answer": "A customer can cancel a booking before the rental becomes active. For example, a CONFIRMED booking can transition to CANCELLED, but an active rental cannot simply be cancelled.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+      "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+    ]
+  },
+  {
+    "id": "q012",
+    "question": "What happens to a car's current location after it is returned?",
+    "ground_truth_answer": "After return, the car's current location becomes the return location.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+    ]
+  },
+  {
+    "id": "q013",
+    "question": "What non-functional requirements should the car rental system satisfy?",
+    "ground_truth_answer": "The system should be extensible, loosely coupled, testable, and easy to maintain. It should support new car types, future pricing rules, and future booking rules.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+    ]
+  },
+  {
+    "id": "q014",
+    "question": "Which features are explicitly out of scope for the system?",
+    "ground_truth_answer": "REST APIs, database, authentication, real payment gateway, GPS/maps, distributed architecture, notifications, and concurrency/thread safety are out of scope.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+    ]
+  },
+  {
+    "id": "q015",
+    "question": "How much time is allocated for the candidate task?",
+    "ground_truth_answer": "The candidate has 45–60 minutes to work through the task.",
+    "relevant_chunk_ids": [
+      "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+    ]
+  }
+]

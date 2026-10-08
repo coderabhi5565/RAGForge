@@ -1,8 +1,16 @@
+from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 
+load_dotenv()
+
+
 class Generator:
-    def __init__(self,model: str = "gemini-2.5-flash"):
+
+    def __init__(
+        self,
+        model: str = "gemini-2.5-flash",
+    ):
         self.llm = ChatGoogleGenerativeAI(
             model=model,
             temperature=0,

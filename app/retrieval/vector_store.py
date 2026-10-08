@@ -1,3 +1,5 @@
+import uuid
+
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance,
@@ -54,9 +56,16 @@ class VectorStore:
         ):
             chunk_id = document.metadata["chunk_id"]
 
+            point_id = str(
+                uuid.uuid5(
+                    uuid.NAMESPACE_URL,
+                    chunk_id,
+                )
+            )
+
             points.append(
                 PointStruct(
-                    id=chunk_id,
+                    id=point_id,
                     vector=embedding,
                     payload={
                         "text": document.page_content,
