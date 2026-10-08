@@ -41,6 +41,11 @@ class EvaluationRunner:
                     relevant_chunk_ids,
                     5,
                 ),
+                "mrr": self.evaluator.evaluate_mrr(
+                    question,
+                    relevant_chunk_ids,
+                    5,
+                ),
             }
 
             results.append(question_result)
@@ -65,12 +70,18 @@ class EvaluationRunner:
             for result in results
         ) / total
 
+        mrr = sum(
+            result["mrr"]["reciprocal_rank"]
+            for result in results
+        ) / total
+
         return {
             "Hit@1": hit_at_1,
             "Hit@3": hit_at_3,
             "Hit@5": hit_at_5,
+            "MRR": mrr,
         }
-    
+
     def run_diagnostics(self, dataset_path: str, k: int = 3):
         dataset = self.load_dataset(dataset_path)
 
