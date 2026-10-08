@@ -7,7 +7,7 @@ class BM25Retriever:
         self.documents = documents
 
         tokenized_documents = [
-            document.page_content.lower().split()
+            document["text"].lower().split()
             for document in documents
         ]
 
@@ -33,6 +33,9 @@ class BM25Retriever:
         )
 
         return [
-            self.documents[i]
+            (
+                self.documents[i],
+                scores[i],
+            )
             for i in ranked_indices[:top_k]
         ]

@@ -92,3 +92,18 @@ class VectorStore:
         )
 
         return results.points
+
+    def get_all_documents(self):
+        records, _ = self.client.scroll(
+            collection_name=self.collection_name,
+            limit=1000,
+            with_payload=True,
+        )
+
+        return [
+            {
+                "text": record.payload["text"],
+                "metadata": record.payload["metadata"],
+            }
+            for record in records
+        ]
