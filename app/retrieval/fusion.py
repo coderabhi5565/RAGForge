@@ -33,9 +33,6 @@ class RRFFusion:
         )
 
         return [
-            (
-                documents[chunk_id],
-                scores[chunk_id],
-            )
+            documents[chunk_id]
             for chunk_id in ranked_chunk_ids[:top_k]
         ]

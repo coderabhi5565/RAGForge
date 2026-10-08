@@ -33,9 +33,6 @@ class BM25Retriever:
         )
 
         return [
-            (
-                self.documents[i],
-                scores[i],
-            )
+            self.documents[i]
             for i in ranked_indices[:top_k]
         ]
