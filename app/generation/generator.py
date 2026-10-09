@@ -1,27 +1,17 @@
+
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage
+from groq import Groq
+
 
 load_dotenv()
 
 
 class Generator:
+    def __init__(self, model: str = "openai/gpt-oss-20b"):
+        self.client = Groq()
+        self.model = model
 
-    def __init__(
-        self,
-        model: str = "gemini-2.5-flash",
-    ):
-        self.llm = ChatGoogleGenerativeAI(
-            model=model,
-            temperature=0,
-        )
-
-    def generate(
-        self,
-        query: str,
-        context: list[str],
-    ) -> str:
-
+    def generate(self, query: str, context: list[str]) -> str:
         context_text = "\n\n".join(context)
 
         prompt = f"""
@@ -39,8 +29,25 @@ Question:
 {query}
 """
 
-        response = self.llm.invoke(
-            [HumanMessage(content=prompt)]
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Answer accurately using only the supplied context. "
+                        "Do not invent facts."
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0,
+            max_completion_tokens=2048,
         )
 
-        return response.content
+        answer = response.choices[0].message.content
+
+        if not answer:
+            raise RuntimeError("Groq returned an empty answer.")
+
+        return answer.strip()
