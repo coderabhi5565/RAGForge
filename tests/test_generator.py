@@ -11,9 +11,12 @@ def make_generator():
     return generator
 
 
+
 def mock_response(content):
     response = Mock()
-    response.choices[0].message.content = content
+    response.choices = [
+        Mock(message=Mock(content=content))
+    ]
     return response
 
 
