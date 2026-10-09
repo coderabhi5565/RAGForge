@@ -1,0 +1,298 @@
+{
+  "model": "openai/gpt-oss-20b",
+  "evaluation_type": "LLM-as-a-judge",
+  "score_range": "1-5",
+  "summary": {
+    "queries_evaluated": 15,
+    "average_correctness": 5.0,
+    "average_faithfulness": 5.0,
+    "average_context_relevance": 5.0
+  },
+  "results": [
+    {
+      "id": "q001",
+      "question": "What information should a customer have in the car rental system?",
+      "reference_answer": "A customer should have a unique ID, name, contact information, and driving license information.",
+      "generated_answer": "A customer in the car rental system should have the following information:\n\n- **Unique ID** – a system‑generated identifier that uniquely identifies the customer.  \n- **Name** – the customer’s full name.  \n- **Contact information** – phone number, email address, or other means to reach the customer.  \n- **Driving license information** – details of the customer’s valid driving license (e.g., license number, issuing authority, expiry date).",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer accurately lists the exact attributes required for a customer as specified in the reference answer and the retrieved context, with no additional or missing information. All factual claims are directly supported by the context, and the context is highly relevant to the question."
+      }
+    },
+    {
+      "id": "q002",
+      "question": "Which car types are initially supported by the system?",
+      "reference_answer": "The system initially supports HATCHBACK, SEDAN, SUV, and LUXURY.",
+      "generated_answer": "The system initially supports the following car types: **HATCHBACK, SEDAN, SUV, and LUXURY**.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer exactly matches the reference answer and is fully supported by the retrieved context, which explicitly lists the same car types. The context is directly relevant to the question."
+      }
+    },
+    {
+      "id": "q003",
+      "question": "What information is stored for a car?",
+      "reference_answer": "Each car has a unique registration number, model, car type, rental price per day, current location, and availability status.",
+      "generated_answer": "For each car the system stores:\n\n- **Unique registration number** (the car’s identifier)  \n- **Model** (e.g., “Toyota Corolla”)  \n- **Car type** (e.g., HATCHBACK, SEDAN, SUV, LUXURY)  \n- **Rental price per day** (the daily rate for that car)  \n- **Current location** (the rental location where the car is presently located)  \n- **Availability status** (whether the car is available, booked, or currently rented)",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer lists exactly the same attributes as the reference answer and all are directly supported by the retrieved context. The context is highly relevant to the question."
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How can a customer search for available cars?",
+      "reference_answer": "A customer can search using pickup location, start date and time, end date and time, and car type. The system should return cars available for the entire requested rental period.",
+      "generated_answer": "A customer can search for cars by providing the following criteria:\n\n1. **Pickup location** – the rental location where the car will be collected.  \n2. **Start date/time** – the beginning of the requested rental period.  \n3. **End date/time** – the end of the requested rental period.  \n4. **Car type** – the desired vehicle category (e.g., HATCHBACK, SEDAN, SUV, LUXURY).\n\nThe system then returns all cars that:\n\n* Are located at the specified pickup location (or will be available there at the start time),  \n* Are not booked for any overlapping period, and  \n* Match the requested car type.\n\nThe search guarantees that the returned cars are available for the **entire** requested rental period.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer accurately reflects the reference answer, uses only facts present in the retrieved context, and directly addresses the question with no unsupported or contradictory statements."
+      }
+    },
+    {
+      "id": "q005",
+      "question": "What information does a booking contain?",
+      "reference_answer": "A booking contains a booking ID, customer, car, pickup location, return location, start date and time, end date and time, total rental amount, and booking status.",
+      "generated_answer": "A booking contains the following information:\n\n- **Booking ID** – a unique identifier for the booking.  \n- **Customer** – the customer who made the booking.  \n- **Car** – the specific car that is being rented.  \n- **Pickup location** – the rental location where the car will be collected.  \n- **Return location** – the rental location where the car will be returned.  \n- **Start date/time** – the beginning of the rental period.  \n- **End date/time** – the end of the rental period.  \n- **Total rental amount** – the calculated cost for the entire rental period.  \n- **Booking status** – the current state of the booking (e.g., CREATED, CONFIRMED, ACTIVE, COMPLETED, CANCELLED).",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer lists exactly the same information as the reference answer and all claims are directly supported by the retrieved context."
+      }
+    },
+    {
+      "id": "q006",
+      "question": "What are the possible booking statuses?",
+      "reference_answer": "The possible booking statuses are CREATED, CONFIRMED, ACTIVE, COMPLETED, and CANCELLED.",
+      "generated_answer": "The booking can be in one of the following statuses:\n\n- **CREATED**  \n- **CONFIRMED**  \n- **ACTIVE**  \n- **COMPLETED**  \n- **CANCELLED**",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer lists exactly the same booking statuses as the reference and the retrieved context, fully matching the factual content. The context directly supports the answer, making it highly relevant."
+      }
+    },
+    {
+      "id": "q007",
+      "question": "How is the total rental amount calculated in V1?",
+      "reference_answer": "The total rental amount is calculated as the number of rental days multiplied by the car's daily rental price.",
+      "generated_answer": "In V1, the total rental amount is calculated as:\n\n**Total Rental Amount = Number of Rental Days × Car’s Daily Rental Price.**",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer exactly matches the formula given in the reference answer and is fully supported by the retrieved context. The context directly addresses the calculation, making it highly relevant."
+      }
+    },
+    {
+      "id": "q008",
+      "question": "What happens if two bookings overlap for the same car?",
+      "reference_answer": "A car cannot be booked for overlapping rental periods. For example, Jan 10–15 overlaps Jan 12–14, so the second booking is not allowed, while Jan 16–20 is allowed.",
+      "generated_answer": "If two bookings overlap for the same car, the second booking is **not allowed**. Once a booking is confirmed, that car becomes unavailable for any other booking that overlaps its rental period. For example, a booking from Jan 10–15 would block another booking from Jan 12–14, but a booking from Jan 16–20 would be permitted.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The answer correctly states that overlapping bookings are not allowed, matches the example from the reference and context, and all claims are directly supported by the retrieved information."
+      }
+    },
+    {
+      "id": "q009",
+      "question": "What state transition occurs when a customer picks up a car?",
+      "reference_answer": "When the car is picked up, the booking transitions from CONFIRMED to ACTIVE.",
+      "generated_answer": "When a customer picks up a car, the booking’s status transitions from **CONFIRMED** to **ACTIVE**. This marks the rental as in‑progress and the car as currently rented.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer correctly states the state transition from CONFIRMED to ACTIVE, exactly matching the reference answer. The claim is directly supported by the retrieved context (section 8. Pick Up). The context is highly relevant as it contains the specific transition information."
+      }
+    },
+    {
+      "id": "q010",
+      "question": "What state transition occurs when a rented car is returned?",
+      "reference_answer": "When the car is returned, the booking transitions from ACTIVE to COMPLETED, and the car becomes available for future rentals.",
+      "generated_answer": "When a rented car is returned, the booking’s status changes from **ACTIVE to COMPLETED**. This transition marks the rental as finished and makes the car available for future bookings.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The answer correctly states the ACTIVE to COMPLETED transition, matches the reference, and is fully supported by the retrieved context."
+      }
+    },
+    {
+      "id": "q011",
+      "question": "When can a customer cancel a booking?",
+      "reference_answer": "A customer can cancel a booking before the rental becomes active. For example, a CONFIRMED booking can transition to CANCELLED, but an active rental cannot simply be cancelled.",
+      "generated_answer": "A customer can cancel a booking only **before the rental becomes active**.  \nIn practice this means the booking must still be in a non‑active state (e.g., `CONFIRMED` or `CREATED`). Once the booking has transitioned to `ACTIVE`, it cannot be cancelled.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer accurately reflects the reference answer and the retrieved context, stating that cancellations are allowed only before the booking becomes active and that active rentals cannot be cancelled. All factual claims are directly supported by the context, and the context is highly relevant to the question."
+      }
+    },
+    {
+      "id": "q012",
+      "question": "What happens to a car's current location after it is returned?",
+      "reference_answer": "After return, the car's current location becomes the return location.",
+      "generated_answer": "After a car is returned, its **current location is updated to the return location** where the customer drops it off.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer accurately restates the reference answer, is fully supported by the retrieved context, and directly addresses the question using relevant information."
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What non-functional requirements should the car rental system satisfy?",
+      "reference_answer": "The system should be extensible, loosely coupled, testable, and easy to maintain. It should support new car types, future pricing rules, and future booking rules.",
+      "generated_answer": "The system should meet the following non‑functional requirements:\n\n| # | Requirement | Description |\n|---|-------------|-------------|\n| 1 | **Extensible** | The design should allow new features (e.g., additional car types, pricing rules, booking rules) to be added with minimal changes to existing code. |\n| 2 | **Loosely coupled** | Components should interact through well‑defined interfaces so that changes in one part do not ripple through the entire system. |\n| 3 | **Testable** | The architecture should support unit and integration testing (e.g., by using dependency injection, mocks, or in‑memory data stores). |\n| 4 | **Easy to maintain** | Code should be clear, modular, and documented, enabling straightforward updates and bug fixes. |\n| 5 | **Support new car types** | The system must be able to add additional car categories (e.g., “MINIVAN”, “TRUCK”) without major refactoring. |\n| 6 | **Support future pricing rules** | Pricing logic should be pluggable so that new rules (weekend, seasonal, discounts, coupons, membership pricing) can be introduced later. |\n| 7 | **Support future booking rules** | Booking logic should be extensible to accommodate new constraints or policies (e.g., minimum rental duration, blackout dates). |\n| 8 | **In‑memory system** | All data should be stored in memory (no external database or persistence layer). |\n\nThese are the non‑functional requirements explicitly specified in the context.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer lists all non‑functional requirements from the reference answer and the retrieved context, including the additional \"In‑memory system\" requirement that is explicitly mentioned in the context. All claims are directly supported by the context, and the context itself is highly relevant to the question."
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Which features are explicitly out of scope for the system?",
+      "reference_answer": "REST APIs, database, authentication, real payment gateway, GPS/maps, distributed architecture, notifications, and concurrency/thread safety are out of scope.",
+      "generated_answer": "The following items are explicitly marked as **out of scope** for the system:\n\n| Feature | Description |\n|---------|-------------|\n| **REST APIs** | No external API layer is required. |\n| **Database** | The system is purely in‑memory; persistence is not needed. |\n| **Authentication** | No user authentication or authorization is handled. |\n| **Real payment gateway** | Payment processing is not part of the scope. |\n| **GPS/maps** | Location tracking or mapping services are excluded. |\n| **Distributed architecture** | The system runs as a single process; no distributed concerns. |\n| **Notifications** | Sending emails, SMS, or other notifications is not required. |\n| **Concurrency/thread safety** | Thread‑safety and concurrent access handling are not addressed. |\n\nThese are the features that the design and implementation should **not** include.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The generated answer lists exactly the same features as the reference answer and matches the \"Out of Scope\" section in the retrieved context, providing a fully accurate and supported response."
+      }
+    },
+    {
+      "id": "q015",
+      "question": "How much time is allocated for the candidate task?",
+      "reference_answer": "The candidate has 45–60 minutes to work through the task.",
+      "generated_answer": "The candidate task is allotted **45–60 minutes**.",
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "scores": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "context_relevance": 5,
+        "reason": "The answer correctly states the time allocation (45–60 minutes), matches the reference answer, is fully supported by the retrieved context, and the context directly addresses the question."
+      }
+    }
+  ]
+}

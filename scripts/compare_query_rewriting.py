@@ -1,12 +1,16 @@
 
+import sys
 import gc
 import json
 from pathlib import Path
 
+# Add the RAGForge project root to Python's import path
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
 from app.retrieval.service import RAGService
 
 
-ROOT = Path(__file__).resolve().parents[1]
 DATASET_PATH = ROOT / "evaluation" / "dataset" / "rag_eval.json"
 
 
@@ -57,10 +61,8 @@ def evaluate(use_query_rewriting: bool):
 
             reciprocal_ranks.append(reciprocal_rank)
 
-            print(
-                f"[{'ON' if use_query_rewriting else 'OFF'}] "
-                f"Query {index}/{len(dataset)} evaluated"
-            )
+            mode = "ON" if use_query_rewriting else "OFF"
+            print(f"[{mode}] Query {index}/{len(dataset)} complete")
 
     finally:
         del service
@@ -93,16 +95,15 @@ def main():
     for metric in ("Hit@1", "Hit@3", "Hit@5", "MRR"):
         on_value = with_rewriting[metric]
         off_value = without_rewriting[metric]
-        delta = on_value - off_value
 
         print(
             f"{metric:<12}"
             f"{on_value:>12.4f}"
             f"{off_value:>12.4f}"
-            f"{delta:>+12.4f}"
+            f"{on_value - off_value:>+12.4f}"
         )
 
-    print(f"\nQueries evaluated per configuration: {with_rewriting['queries']}")
+    print(f"\nQueries per configuration: {with_rewriting['queries']}")
     print("Delta = ON - OFF")
 
 

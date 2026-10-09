@@ -26,9 +26,9 @@ async def upload_document(
         with open(file_path, "wb") as f:
             f.write(contents)
 
-        result = ingestion_service.ingest(
-            str(file_path)
-        )
+        result = ingestion_service.ingest(str(file_path))
+
+        rag_service.refresh_bm25()
 
         return {
             "message": "Document ingested successfully",
