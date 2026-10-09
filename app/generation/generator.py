@@ -1,4 +1,6 @@
 
+import os
+
 from dotenv import load_dotenv
 from groq import Groq
 
@@ -8,7 +10,14 @@ load_dotenv()
 
 class Generator:
     def __init__(self, model: str = "openai/gpt-oss-20b"):
-        self.client = Groq()
+        api_key = os.getenv("GROQ_API_KEY")
+
+        if not api_key:
+            raise ValueError(
+                "GROQ_API_KEY missing. Add it to your .env file."
+            )
+
+        self.client = Groq(api_key=api_key)
         self.model = model
 
     def generate(self, query: str, context: list[str]) -> str:
@@ -36,18 +45,26 @@ Question:
                     "role": "system",
                     "content": (
                         "Answer accurately using only the supplied context. "
-                        "Do not invent facts."
+                        "Do not invent facts. If the context does not contain "
+                        "the answer, state that there is insufficient "
+                        "information in the provided documents."
                     ),
                 },
-                {"role": "user", "content": prompt},
+                {
+                    "role": "user",
+                    "content": prompt,
+                },
             ],
             temperature=0,
             max_completion_tokens=2048,
+            include_reasoning=False,
         )
 
         answer = response.choices[0].message.content
 
-        if not answer:
-            raise RuntimeError("Groq returned an empty answer.")
+        if not answer or not answer.strip():
+            raise RuntimeError(
+                "Groq returned empty output during answer generation."
+            )
 
         return answer.strip()

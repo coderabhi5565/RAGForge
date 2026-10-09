@@ -36,32 +36,58 @@ Original question:
 {question}
 """
 
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a query rewriting component for a "
-                        "Retrieval-Augmented Generation system. "
-                        "Return only the rewritten query."
-                    ),
-                },
-                {
-                    "role": "user",
-                    "content": prompt,
-                },
-            ],
-            temperature=0,
-            max_completion_tokens=256,
-            include_reasoning=False,
-        )
-
-        rewritten_query = response.choices[0].message.content
-
-        if not rewritten_query or not rewritten_query.strip():
-            raise RuntimeError(
-                "Groq returned empty output during query rewriting."
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are a query rewriting component for a "
+                            "Retrieval-Augmented Generation system. "
+                            "Return only the rewritten query, without "
+                            "reasoning or explanation."
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    },
+                ],
+                temperature=0,
+                max_completion_tokens=512,
+                include_reasoning=False,
             )
 
-        return rewritten_query.strip()
+            choice = response.choices[0]
+            message = choice.message
+
+            # Diagnostic information for debugging empty responses
+            print("\n===== GROQ QUERY REWRITE DIAGNOSTICS =====")
+            print("Model:", response.model)
+            print("Finish reason:", choice.finish_reason)
+            print("Usage:", response.usage)
+            print("Message content:", repr(message.content))
+            print(
+                "Reasoning:",
+                repr(getattr(message, "reasoning", None)),
+            )
+            print("==========================================\n")
+
+            rewritten_query = message.content
+
+            if rewritten_query and rewritten_query.strip():
+                return rewritten_query.strip()
+
+            print(
+                "[QueryRewriter] Empty response from Groq; "
+                "using original query."
+            )
+            return question
+
+        except Exception as exc:
+            print(
+                f"[QueryRewriter] Groq request failed: {exc}. "
+                "Using original query."
+            )
+            return question
