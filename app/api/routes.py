@@ -2,7 +2,7 @@
 import logging
 import uuid
 from pathlib import Path
-
+from app.routing.service import AdaptiveRAGService
 from fastapi import APIRouter, UploadFile, File, HTTPException
 
 from app.ingestion.service import IngestionService
@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 ingestion_service = IngestionService()
-rag_service = RAGService()
+adaptive_service = AdaptiveRAGService()
 
 UPLOAD_DIR = Path("data/uploads")
 MAX_FILE_SIZE = 20 * 1024 * 1024
@@ -66,7 +66,7 @@ async def upload_document(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="Uploaded file is empty.")
 
         result = ingestion_service.ingest(str(file_path))
-        rag_service.refresh_bm25()
+        adaptive_service.rag_service.refresh_bm25()
 
         return {
             "message": "Document ingested successfully",
@@ -100,9 +100,9 @@ def query_documents(request: QueryRequest):
         )
 
     try:
-        return rag_service.query(
-            question=request.question.strip(),
-            top_k=request.top_k,
+        return adaptive_service.query(
+        question=request.question.strip(),
+        top_k=request.top_k,
         )
 
     except ValueError as exc:

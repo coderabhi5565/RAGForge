@@ -9,4 +9,6 @@ class QueryRequest(BaseModel):
 
 class QueryResponse(BaseModel):
     answer: str
-    sources: list[dict]
+    sources: list[dict] = Field(default_factory=list)
+    route: str
+    route_reason: str

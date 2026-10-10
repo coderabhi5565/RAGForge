@@ -16,27 +16,30 @@ def test_health_endpoint():
     assert response.json()["status"] == "healthy"
 
 
+
 def test_query_returns_answer_and_sources(monkeypatch):
     monkeypatch.setattr(
-        routes.rag_service,
+        routes.adaptive_service,
         "query",
         lambda question, top_k: {
             "answer": "Razorpay",
             "sources": [{"chunk_id": "resume_chunk_3"}],
+            "route": "document_rag",
+            "route_reason": "The question refers to uploaded documents.",
         },
     )
 
     response = client.post(
         "/query",
-        json={
-            "question": "What payment gateway does Foodingo use?",
-            "top_k": 5,
-        },
+        json={"question": "What payment gateway is used?"},
     )
 
     assert response.status_code == 200
-    assert response.json()["answer"] == "Razorpay"
-    assert response.json()["sources"]
+    data = response.json()
+    assert data["answer"] == "Razorpay"
+    assert data["sources"] == [{"chunk_id": "resume_chunk_3"}]
+    assert data["route"] == "document_rag"
+    assert data["route_reason"] == "The question refers to uploaded documents."
 
 
 @pytest.mark.parametrize("top_k", [0, -1, 21])
