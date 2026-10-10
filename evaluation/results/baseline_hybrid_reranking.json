@@ -1,0 +1,682 @@
+{
+  "experiment": "baseline_hybrid_reranking",
+  "created_at_utc": "2026-10-10T06:47:12.934983+00:00",
+  "dataset": "evaluation\\dataset\\rag_eval.json",
+  "query_count": 15,
+  "metrics": {
+    "Hit@1": 0.8,
+    "Recall@1": 0.7333333333333333,
+    "Precision@1": 0.8,
+    "Hit@3": 1.0,
+    "Recall@3": 1.0,
+    "Precision@3": 0.3777777777777777,
+    "Hit@5": 1.0,
+    "Recall@5": 1.0,
+    "Precision@5": 0.22666666666666668,
+    "MRR": 0.8777777777777778
+  },
+  "per_query_results": [
+    {
+      "id": "q001",
+      "question": "What information should a customer have in the car rental system?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "abhinav_resume (2)-1 (3)_chunk_4"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q002",
+      "question": "Which car types are initially supported by the system?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q003",
+      "question": "What information is stored for a car?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "abhinav_resume (2)-1 (3)_chunk_3"
+      ],
+      "hit_at_1": {
+        "hit": 0
+      },
+      "recall_at_1": {
+        "recall": 0.0
+      },
+      "precision_at_1": {
+        "precision": 0.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 0.5
+      }
+    },
+    {
+      "id": "q004",
+      "question": "How can a customer search for available cars?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q005",
+      "question": "What information does a booking contain?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q006",
+      "question": "What are the possible booking statuses?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q007",
+      "question": "How is the total rental amount calculated in V1?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 0.5
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.6666666666666666
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.4
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q008",
+      "question": "What happens if two bookings overlap for the same car?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "abhinav_resume (2)-1 (3)_chunk_1"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q009",
+      "question": "What state transition occurs when a customer picks up a car?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "abhinav_resume (2)-1 (3)_chunk_4"
+      ],
+      "hit_at_1": {
+        "hit": 0
+      },
+      "recall_at_1": {
+        "recall": 0.0
+      },
+      "precision_at_1": {
+        "precision": 0.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 0.3333333333333333
+      }
+    },
+    {
+      "id": "q010",
+      "question": "What state transition occurs when a rented car is returned?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 0
+      },
+      "recall_at_1": {
+        "recall": 0.0
+      },
+      "precision_at_1": {
+        "precision": 0.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 0.3333333333333333
+      }
+    },
+    {
+      "id": "q011",
+      "question": "When can a customer cancel a booking?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "abhinav_resume (2)-1 (3)_chunk_4"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 0.5
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.6666666666666666
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.4
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q012",
+      "question": "What happens to a car's current location after it is returned?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "abhinav_resume (2)-1 (3)_chunk_2"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q013",
+      "question": "What non-functional requirements should the car rental system satisfy?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_2",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q014",
+      "question": "Which features are explicitly out of scope for the system?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4",
+        "abhinav_resume (2)-1 (3)_chunk_1",
+        "abhinav_resume (2)-1 (3)_chunk_3"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    },
+    {
+      "id": "q015",
+      "question": "How much time is allocated for the candidate task?",
+      "relevant_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4"
+      ],
+      "retrieved_chunk_ids": [
+        "LLD_Arena_Car_Rental_System_Medium_chunk_4",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_3",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_0",
+        "LLD_Arena_Car_Rental_System_Medium_chunk_1",
+        "abhinav_resume (2)-1 (3)_chunk_1"
+      ],
+      "hit_at_1": {
+        "hit": 1
+      },
+      "recall_at_1": {
+        "recall": 1.0
+      },
+      "precision_at_1": {
+        "precision": 1.0
+      },
+      "hit_at_3": {
+        "hit": 1
+      },
+      "recall_at_3": {
+        "recall": 1.0
+      },
+      "precision_at_3": {
+        "precision": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "hit": 1
+      },
+      "recall_at_5": {
+        "recall": 1.0
+      },
+      "precision_at_5": {
+        "precision": 0.2
+      },
+      "mrr": {
+        "reciprocal_rank": 1.0
+      }
+    }
+  ]
+}
