@@ -38,9 +38,16 @@ class RAGService:
         return {
             document["metadata"]["chunk_id"]
             for document in documents
+            if document.get("metadata")
+            and document["metadata"].get("chunk_id")
         }
 
-    def retrieve(self, question: str, top_k: int = 5):
+    def retrieve(
+        self,
+        question: str,
+        top_k: int = 5,
+        source_name: str | None = None,
+    ):
         if not question or not question.strip():
             raise ValueError("Question cannot be empty.")
 
@@ -53,6 +60,7 @@ class RAGService:
             rewritten_query = self.query_rewriter.rewrite(
                 retrieval_query
             )
+
             if rewritten_query and rewritten_query.strip():
                 retrieval_query = rewritten_query.strip()
 
@@ -60,60 +68,57 @@ class RAGService:
             retrieval_query
         )
 
-        initial_k = self.initial_candidate_k
-
-        dense_points = self.vector_store.similarity_search(
-            query_vector=query_vector,
-            top_k=initial_k,
-        )
-
-        dense_results = [
-            {
-                "text": point.payload["text"],
-                "metadata": point.payload["metadata"],
-            }
-            for point in dense_points
-            if point.payload
-            and point.payload.get("text")
-            and point.payload.get("metadata") is not None
-        ]
-
-        bm25_results = self.bm25.retrieve(
-            query=retrieval_query,
-            top_k=initial_k,
-        )
-
-        dense_top_ids = self._chunk_ids(dense_results[:5])
-        bm25_top_ids = self._chunk_ids(bm25_results[:5])
-        overlap = len(dense_top_ids & bm25_top_ids)
-
-        expanded = overlap < self.agreement_threshold
-
-        if expanded:
-            dense_points = self.vector_store.similarity_search(
+        def dense_search(candidate_k):
+            points = self.vector_store.similarity_search(
                 query_vector=query_vector,
-                top_k=self.expanded_candidate_k,
+                top_k=candidate_k,
+                source_name=source_name,
             )
 
-            dense_results = [
+            return [
                 {
                     "text": point.payload["text"],
                     "metadata": point.payload["metadata"],
                 }
-                for point in dense_points
+                for point in points
                 if point.payload
                 and point.payload.get("text")
                 and point.payload.get("metadata") is not None
+                and point.payload["metadata"].get("chunk_id")
             ]
 
-            bm25_results = self.bm25.retrieve(
+        def sparse_search(candidate_k):
+            return self.bm25.retrieve(
                 query=retrieval_query,
-                top_k=self.expanded_candidate_k,
+                top_k=candidate_k,
+                source_name=source_name,
             )
+
+        initial_k = self.initial_candidate_k
+
+        dense_results = dense_search(initial_k)
+        bm25_results = sparse_search(initial_k)
+
+        dense_top_ids = self._chunk_ids(dense_results[:5])
+        bm25_top_ids = self._chunk_ids(bm25_results[:5])
+
+        overlap = len(dense_top_ids & bm25_top_ids)
+
+        expanded = overlap < self.agreement_threshold
+
+        candidate_k = (
+            self.expanded_candidate_k
+            if expanded
+            else initial_k
+        )
+
+        if expanded:
+            dense_results = dense_search(candidate_k)
+            bm25_results = sparse_search(candidate_k)
 
         fused_results = self.fusion.fuse(
             rankings=[dense_results, bm25_results],
-            top_k=self.expanded_candidate_k if expanded else initial_k,
+            top_k=candidate_k,
         )
 
         if not fused_results:

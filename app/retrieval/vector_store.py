@@ -83,14 +83,28 @@ class VectorStore:
         self,
         query_vector: list[float],
         top_k: int = 5,
+        source_name: str | None = None,
     ):
-        results = self.client.query_points(
-            collection_name=self.collection_name,
-            query=query_vector,
-            limit=top_k,
-            with_payload=True,
-        )
+        search_args = {
+            "collection_name": self.collection_name,
+            "query": query_vector,
+            "limit": top_k,
+            "with_payload": True,
+        }
 
+        if source_name:
+            from qdrant_client.models import Filter, FieldCondition, MatchValue
+
+            search_args["query_filter"] = Filter(
+                must=[
+                    FieldCondition(
+                        key="metadata.source",
+                        match=MatchValue(value=source_name),
+                    )
+                ]
+            )
+
+        results = self.client.query_points(**search_args)
         return results.points
 
     def get_all_documents(self):

@@ -20,7 +20,12 @@ class BM25Retriever:
 
         self.bm25 = BM25Okapi(tokenized_documents)
 
-    def retrieve(self, query: str, top_k: int = 20):
+    def retrieve(
+        self,
+        query: str,
+        top_k: int = 20,
+        source_name: str | None = None,
+    ):
         if not self.documents or self.bm25 is None or top_k <= 0:
             return []
 
@@ -37,8 +42,21 @@ class BM25Retriever:
             reverse=True,
         )
 
-        return [
-            self.documents[i]
-            for i in ranked_indices[:top_k]
-            if scores[i] > 0
-        ]
+        results = []
+
+        for i in ranked_indices:
+            document = self.documents[i]
+
+            if source_name and (
+                document.get("metadata", {}).get("source")
+                != source_name
+            ):
+                continue
+
+            if scores[i] > 0:
+                results.append(document)
+
+            if len(results) >= top_k:
+                break
+
+        return results

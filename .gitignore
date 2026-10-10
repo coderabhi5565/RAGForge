@@ -19,3 +19,11 @@ qdrant_storage/
 
 # Logs
 *.log
+
+# Test and Python caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Local vector database storage
+qdrant_storage/

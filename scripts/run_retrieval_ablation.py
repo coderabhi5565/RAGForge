@@ -22,6 +22,7 @@ OUTPUT_PATH = ROOT / "evaluation" / "results" / "retrieval_ablation.json"
 K_VALUES = (1, 3, 5)
 CANDIDATE_K = 10
 FINAL_K = 5
+SOURCE_NAME = "LLD_Arena_Car_Rental_System_Medium.docx"
 
 
 class RerankDocument:
@@ -58,6 +59,7 @@ def dense_documents(rag, query):
     points = rag.vector_store.similarity_search(
         query_vector=vector,
         top_k=CANDIDATE_K,
+        source_name=SOURCE_NAME,
     )
 
     return [
@@ -77,8 +79,8 @@ def bm25_documents(rag, query):
     return rag.bm25.retrieve(
         query=query,
         top_k=CANDIDATE_K,
+        source_name=SOURCE_NAME,
     )
-
 
 def hybrid_documents(rag, query):
     dense = dense_documents(rag, query)
@@ -116,11 +118,11 @@ def retrieve_for_experiment(rag, experiment, question):
         )
 
     if experiment == "E_full_adaptive":
-        # Uses the existing production retrieval pipeline unchanged.
         return rag.retrieve(
-            question=question,
-            top_k=FINAL_K,
-        )
+          question=question,
+          top_k=FINAL_K,
+          source_name=SOURCE_NAME,
+      )
 
     raise ValueError(f"Unknown experiment: {experiment}")
 
